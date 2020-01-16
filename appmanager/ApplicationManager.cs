@@ -34,8 +34,8 @@ namespace mantis_tests
             driver = new FirefoxDriver();
             // объект нужен для того что 
             driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(1);
-            baseURL = "http://192.168.42.128/mantisbt-2.23.0";
-            Registration = new RegistrationHelper(this);
+            baseURL = "http://192.168.238.13/mantisbt-2.23.0";
+            Registration = new RegistrationHelper(this, baseURL);
  
             ManagementMenu = new ManagementMenuHelper(this, baseURL);
             Projects = new ProjectManagementHelper(this);
@@ -67,7 +67,7 @@ namespace mantis_tests
             {
                 // Создаем новый экзмепляр                
                 ApplicationManager newInstance = new ApplicationManager();
-                newInstance.driver.Url = "http://192.168.42.128/mantisbt-2.23.0/login_page.php";
+                newInstance.driver.Url = "http://192.168.238.13/mantisbt-2.23.0/login_page.php";
                 app.Value = newInstance;
             }
             // для каждого потока будет разным

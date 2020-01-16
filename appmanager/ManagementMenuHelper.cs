@@ -22,9 +22,5 @@ namespace mantis_tests
             }
         }
 
-        public void GotoRemoveProjectPage(int id)
-        {
-            driver.Navigate().GoToUrl(baseUrl + "/manage_proj_edit_page.php?project_id=" + id);
-        }
     }
 }

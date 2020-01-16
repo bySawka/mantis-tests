@@ -40,8 +40,8 @@ namespace mantis_tests
         {
             if (IsLoggedIn())
             {
-
-                driver.Navigate().GoToUrl ( baseUrl + "/logout_page.php" );
+                driver.FindElement(By.ClassName("user-info")).Click();
+                driver.FindElement(By.XPath(@"//a[@href='/mantisbt-2.23.0/logout_page.php']")).Click();
                 //Ждем загрузку страницы
                 driver.FindElement(By.Name("username")).Click();
             }
@@ -51,7 +51,7 @@ namespace mantis_tests
         {
             //done
             return IsElementPresent(By.ClassName("user-info"));
-        }
+        }   
 
         public bool IsLoggedIn(AccountData account)
         {
