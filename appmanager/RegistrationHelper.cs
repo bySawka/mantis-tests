@@ -45,12 +45,12 @@ namespace mantis_tests
 
         private void OpenRegistrationForm()
         {
-            manager.Driver.FindElement(By.CssSelector(@"a[class='back-to-login-link pull-left']")).Click();
+            manager.Driver.FindElement(By.XPath(@"//a[@href='signup_page.php']")).Click();
         }
 
         private void SubmitRegistration()
         {
-            manager.Driver.FindElement(By.CssSelector(@"input[class='width-40 pull-right btn btn-success btn-inverse bigger-110']")).Click();
+            manager.Driver.FindElement(By.XPath(@"//input[@type='submit']")).Click();
         }
 
         private void FillRegistrationForm(AccountData account)

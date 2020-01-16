@@ -43,7 +43,7 @@ namespace mantis_tests
              return this;
         }
 
-        public ProjectManagementHelper selectRemovalProject(int id)
+        public ProjectManagementHelper selectRemovalProject(string id)
         {
             manager.Driver.FindElement(By.XPath("//a[@href='manage_proj_edit_page.php?project_id=" + id+"']")).Click();
             return this;

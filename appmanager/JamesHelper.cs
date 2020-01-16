@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using MinimalisticTelnet;
+﻿using MinimalisticTelnet;
 
 namespace mantis_tests
 {
@@ -17,7 +12,7 @@ namespace mantis_tests
             {
                 return;
             }
-
+                
             TelnetConnection telnet = LoginToJames();
             telnet.WriteLine("adduser " + account.Name + " " + account.Password);
             System.Console.Out.WriteLine(telnet.Read());
@@ -40,7 +35,7 @@ namespace mantis_tests
             TelnetConnection telnet = LoginToJames();
             telnet.WriteLine("verify " + account.Name);
             string s = telnet.Read();
-            System.Console.Out.WriteLine(s);
+            System.Console.WriteLine(s);
             return !s.Contains("does not exist");
         }
 

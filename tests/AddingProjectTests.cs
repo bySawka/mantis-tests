@@ -9,8 +9,15 @@ namespace mantis_tests
         [Test]
         public void AddingProjectTest()
         {
+
             // prepare
-            List<ProjectData> oldList = ProjectData.GetALL();
+            AccountData account = new AccountData()
+            {
+                Name = "administrator",
+                Password = "root"
+            };
+
+            List<ProjectData> oldList = ProjectData.GetALLFromWebServer(account);
             ProjectData project = app.Projects.GetValidProject(oldList);
 
             // action
@@ -19,7 +26,7 @@ namespace mantis_tests
             // считаем кол-во
             Assert.AreEqual(oldList.Count + 1, app.Projects.GeProjectsCount());
 
-            List<ProjectData> newList = ProjectData.GetALL();
+            List<ProjectData> newList = ProjectData.GetALLFromDB();
 
             oldList.Add(project);
             oldList.Sort();

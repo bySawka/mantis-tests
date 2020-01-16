@@ -1,10 +1,11 @@
-﻿using System.IO;
+﻿using System.Collections.Generic;
+using System.IO;
 using NUnit.Framework;
 
 
 namespace mantis_tests
 {
-    /*
+    
     [TestFixture]
     public class AccountCreationTests : TestBase
     {
@@ -23,15 +24,22 @@ namespace mantis_tests
         {
             AccountData account = new AccountData()
             {
-                Name = "testUser9",
+                Name = "testUser13",
                 Password = "password",
-                Email = "testuser9@localhost.localdomain"
+                Email = "testuser13@localhost"
             };
 
+           List<AccountData> accounts = app.Admin.GetAllAccounts();
+           AccountData existingAccount = accounts.Find(x => x.Name == account.Name);
+            if (existingAccount != null)
+            {
+                app.Admin.DeleteAccount(existingAccount);
+            }
             app.James.Delete(account);
             app.James.Add(account);
 
             app.Registration.Register(account);
+
         }
 
         [OneTimeTearDown]
@@ -41,5 +49,4 @@ namespace mantis_tests
         }
 
     }
-    */
-}
+  }

@@ -15,7 +15,7 @@ namespace mantis_tests
         {
             for (int i = 0; i < 20; i++)
             {
-                Pop3Client pop3 = new Pop3Client("192.168.42.128", 110, account.Name, account.Password, false);
+                Pop3Client pop3 = new Pop3Client("192.168.238.13", 110, account.Name, account.Password, false);
                 pop3.Connect();
                 pop3.Authenticate();
 
@@ -24,6 +24,7 @@ namespace mantis_tests
                    MailMessage message = pop3.GetMessage(1);
                     string body = message.Body;
                     pop3.DeleteMessage(1);
+                    pop3.LogOut();
                     return body;
                 }
                 else

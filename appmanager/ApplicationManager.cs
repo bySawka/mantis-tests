@@ -21,6 +21,8 @@ namespace mantis_tests
         public JamesHelper James { get;  set; }
 
         public MailHelper Mail { get; set; }
+        public AdminHelper Admin { get; set; }
+        internal ApiHelper API { get;  set; }
         public ManagementMenuHelper ManagementMenu { get;  set; }
         public ProjectManagementHelper Projects { get;  set; }
         public LoginHelper Auth { get;  set; }
@@ -42,9 +44,11 @@ namespace mantis_tests
             Auth = new LoginHelper(this, baseURL);
 
 
-            //Ftp = new FtpHelper(this);
-            // James = new JamesHelper(this);
-            //  Mail = new MailHelper(this);
+            Ftp = new FtpHelper(this);
+            James = new JamesHelper(this);
+            Mail = new MailHelper(this);
+            Admin = new AdminHelper(this, baseURL);
+            API = new ApiHelper(this);
         }
 
         // деструктор
@@ -67,7 +71,7 @@ namespace mantis_tests
             {
                 // Создаем новый экзмепляр                
                 ApplicationManager newInstance = new ApplicationManager();
-                newInstance.driver.Url = "http://192.168.238.13/mantisbt-2.23.0/login_page.php";
+                newInstance.driver.Url = newInstance.baseURL + "/login_page.php";
                 app.Value = newInstance;
             }
             // для каждого потока будет разным
